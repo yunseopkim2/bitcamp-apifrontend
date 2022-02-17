@@ -1,25 +1,18 @@
 import React from "react";
-import { BrowserRouter as Router, Link, Route, Routes} from 'react-router-dom'
-import Bmi from "./hello/Bmi";
-import Calc from "./hello/Calc";
-import Grade from "./hello/Grade";
-import Hello from "./hello/Hello";
-import Home from "./hello/Home";
-import Login from "./hello/Login";
-const App = () => {
-    return(
-        <div>
-        <Router>
-        <Routes>
-        <Route expected path="/" element= {<Home/>}/>
-        <Route path = "/hello" element={<Hello/>}/>
-        <Route path = "/login" element={<Login/>}/>
-        <Route path = "/calc" element={<Calc/>}/>
-        <Route path = "/bmi" element={<Bmi/>}/>
-        <Route path = "/grade" element={<Grade/>}/>
-        </Routes>
-        </Router>
-        </div>
-    )
+import { useRoutes } from 'react-router-dom'
+import Bmi from "./components/Bmi";
+import Calc from "./components/Calc";
+import Grade from "./components/Grade";
+import Home from "./pages/Home";
+import Login from "./components/Login";
+
+export default function App (){
+            return useRoutes([
+                {path: "/", element: <Home/>},
+                {path: "bmi", element: <Bmi/>},
+                {path: "calc", element: <Calc/>},
+                {path: "grade", element: <Grade/>},
+                {path: "login", element: <Login/>}
+    ]);
 }
-export default App;
+
