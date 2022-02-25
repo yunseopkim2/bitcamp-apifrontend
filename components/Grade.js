@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import Layout from '../containers/Layout';
-import axios from 'axios';
 export default function Grade(){
     const [inputs, setInputs] = useState({})
     const{username, kor, eng, math} = inputs;

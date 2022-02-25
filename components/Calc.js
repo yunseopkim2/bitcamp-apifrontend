@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import Layout from "../containers/Layout";
-import axios from "axios";
 export default function Calc (){
     const[inputs, setInputs] = useState({})
     const{num1, opcode, num2} = inputs;
@@ -15,6 +14,28 @@ export default function Calc (){
         alert(`계산기: ${JSON.stringify(calcRequest)}`)
     }
    
+
+    return <Layout><form><h1>계산기</h1>  
+    <div>
+    <label><b>num1</b></label>
+    <input type = "text" name = "num1" onChange={handleChange}/><br/>
+
+    <label htmlFor=""><b>opcode</b></label>
+    <select type = "text" name="opcode" onChange={handleChange}>
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+        <option value="%">%</option>
+    </select>
+    <br/>
+    <label htmlFor=""><b>num2</b></label>
+    <input type= "text" name ="num2" onChange={handleChange}/><br/>
+    <button onClick={handleClick}>CALC</button>
+    </div>
+    </form>
+    </Layout>
+}
    /* const[opcode, setopcode] = useState("")
     const[num2, setNum2] = useState(0)
     const [result, setResult] = useState(0)
@@ -31,24 +52,3 @@ export default function Calc (){
     </form>
     <div>결과: {result}</div>
     }*/
-    return <Layout><form><h1>계산기</h1>  
-    <div>
-    <label><b>num1</b></label>
-    <input type = "text" name = "num1" onChange={handleChange}/><br/>
-
-    <label htmlFor=""><b>opcode</b></label>
-    <select type = "text" name="opcode" onChange={handleChange}>
-        <option value="">+</option>
-        <option value="">-</option>
-        <option value="">*</option>
-        <option value="">/</option>
-        <option value="">%</option>
-    </select>
-    <br/>
-    <label htmlFor=""><b>num2</b></label>
-    <input type= "text" name ="num2" onChange={handleChange}/><br/>
-    <button onClick={handleClick}>CALC</button>
-    </div>
-    </form>
-    </Layout>
-}
