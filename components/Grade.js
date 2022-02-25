@@ -1,7 +1,23 @@
 import React, {useState} from 'react';
 import Layout from '../containers/Layout';
+import axios from 'axios';
 export default function Grade(){
-    const[username, setUsername] = useState ("")
+    const [inputs, setInputs] = useState({})
+    const{username, kor, eng, math} = inputs;
+
+    const handleChange = (e) =>{
+        e.preventDefault()
+        const{value, name} = e.target;
+        setInputs({...inputs, [name]: value})
+    }
+    const handleClick = (e) =>{
+        e.preventDefault()
+        const gradeRequset = {username, kor, eng, math}
+        alert(`사용자 이름: ${JSON.stringify(gradeRequset)}`)
+    }
+
+
+   /* const[username, setUsername] = useState ("")
     const[kor, setKor] =useState(0)
     const[eng, setEng] =useState(0)
     const[math, setMath] =useState(0)
@@ -24,29 +40,27 @@ export default function Grade(){
         setResult('이름 : '+(username)+ " 국어 : "+ Number(kor)+ " 영어 : "+ Number(eng)+ " 수학 : "+Number(math))
         setTotal('총점 : '+(Number(kor)+Number(eng)+Number(math)) + ' 평균 : ' +(Number(kor)+Number(eng)+Number(math))/3)
     }
-    
+    */
 
     
-    return (<Layout><h1>성적표</h1>
+    return (<Layout><form><h1>성적표</h1>
     <div>
     
     <label><b>Username</b></label><br/>
-    <input id = "username" type =""/><br/>
+    <input type = "text" name= "username" onChange={handleChange}/><br/>
     <label><b>Kor</b></label><br/> 
-    <input id = "kor" type = ""/><br/>
+    <input type = "text" name = "kor" onChange={handleChange}/><br/>
     <label><b>Eng</b></label><br/>
-    <input id = "eng" type = ""/><br/>
+    <input type= "text" name = "eng" onChange={handleChange}/><br/>
     <label><b>Math</b></label><br/>
-    <input id = "math" type = ""/><br/>
-    <label><b>total</b></label><br/>
-    <label><b>avg</b></label><br/>
-    <button onClick={()=>a()}>실행</button><br/>
-    <div>{result}</div>
-    <div>{total}</div>
+    <input type = "text"name = "math" onChange={handleChange}/><br/>
+    
+    <button onClick={handleClick}>성적 체크</button><br/>
+   
    
         
     </div>
-    
+    </form>
 
     </Layout>)
 }
